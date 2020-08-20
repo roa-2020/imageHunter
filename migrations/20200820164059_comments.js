@@ -12,12 +12,18 @@
  * Define Table and Structure
  ************************************************************/
 exports.up = (knex) => {
-  
+  knex.schema.createTable('comments', (table) => {
+    table.increments('id')
+    table.string('user_name')
+    table.string('user_image')
+    table.date('date')
+    table.string('comment')
+  })
 };
 
 /************************************************************
  * Define Delete Table
  ************************************************************/
 exports.down = (knex) => {
-  
+  knex.schema.dropTable('comments')
 };
