@@ -1,0 +1,33 @@
+{
+  "name": "imagehunter",
+  "version": "1.0.0",
+  "description": "An Image Viewer and Commenter",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "jest --watchAll --coverage --noStackTrace"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roa-2020/imageHunter.git"
+  },
+  "author": "anthony-kyle, phil-chan, itsmattsaunders, steven-delacy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roa-2020/imageHunter/issues"
+  },
+  "homepage": "https://github.com/roa-2020/imageHunter#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "knex": "^0.21.5"
+  },
+  "devDependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "jest": "^26.4.0",
+    "nodemon": "^2.0.4",
+    "sqlite3": "^5.0.0",
+    "supertest": "^4.0.2"
+  }
+}
