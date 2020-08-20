@@ -13,10 +13,10 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('img_com').insert([
-        {image_id: 1; comment_id: 1},
-        {image_id: 1; comment_id: 2},
-        {image_id: 2; comment_id: 4},
-        {image_id: 3; comment_id: 3}
+        {image_id: 1, comment_id: 1},
+        {image_id: 1, comment_id: 2},
+        {image_id: 2, comment_id: 4},
+        {image_id: 3, comment_id: 3}
       ]);
     });
 };
