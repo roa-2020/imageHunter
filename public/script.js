@@ -1,19 +1,38 @@
-let modal = document.getElementById("myModal");
-let btn = document.getElementById("button");
-let span = document.getElementsByClassName(".close")[0];
+/************************************************************
+ * File:    public/script.js
+ * Purpose: Define Front End JS Interactions
+ * Authors: Anthony McGrath (anthony-kyle)
+ *          Matt Saunders   (itsmattsaunders)
+ *          Philip Chan     (phil-chan)
+ *          Steven DeLacy  (steven-delacy)
+ ************************************************************/
 
-btn.onclick = function () {
-  console.log("click");
-  modal.style.display = "block";
-};
+/************************************************************
+ * Define Global Variables
+ ************************************************************/
+let modal         = document.querySelector("#myModal")
+let uploadButton  = document.querySelector("#uploadImageToggle")
+let closeModal    = document.querySelector("#closeModal")
 
-span.onclick = function () {
-  console.log("click");
-  modal.style.display = "none";
-};
 
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
+/************************************************************
+ * Define Functions
+ ************************************************************/
+function addListeners(){
+  modal.addEventListener('click', hideModal)
+  uploadButton.addEventListener('click', showModal)
+  closeModal.addEventListener('click', hideModal)
+}
+
+function showModal(){
+  modal.classList.remove('hidden')
+}
+
+function hideModal(){
+  modal.classList.add('hidden')
+}
+
+/************************************************************
+ * Add Listeners
+ ************************************************************/
+document.addEventListener('DOMContentLoaded', addListeners)
