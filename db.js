@@ -48,6 +48,18 @@ function saveImage(image, db = database){
   return db('images').insert( image )
 }
 
+function saveComment(id, comment, db = database){
+  return db ('comments').insert( comment )
+  .then(ids => {
+    const commentId = ids[0]
+    const join = {
+      image_id: id, 
+      comment_id: commentId
+    }
+    return db('img_com').insert(join)
+  })
+}
+
 /************************************************************
  * Export Functions
  ************************************************************/
@@ -55,4 +67,5 @@ module.exports = {
   getImageById,
   formatDate,
   saveImage,
+  saveComment
 }
