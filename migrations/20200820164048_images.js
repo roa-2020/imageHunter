@@ -12,16 +12,17 @@
  * Define Table and Structure
  ************************************************************/
 exports.up = (knex) => {
-  knex.schema.createTable('images', (table) => {
-  table.string('img_url')
-  table.string('img_name')
-  table.string('author_name')
-  table.string('author_url')
+  return knex.schema.createTable('images', (table) => {
+    table.increments('id')
+    table.string('img_url')
+    table.string('img_name')
+    table.string('author_name')
+    table.string('author_url')
 });
 }
 /************************************************************
  * Define Delete Table
  ************************************************************/
 exports.down = (knex) => {
-    knex.schema.dropTable('images')
+  return knex.schema.dropTable('images')
 };

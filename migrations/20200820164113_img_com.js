@@ -12,12 +12,14 @@
  * Define Table and Structure
  ************************************************************/
 exports.up = (knex) => {
-  
-};
-
+  return knex.schema.createTable('img_com', (table) => {
+    table.integer('image_id'),
+    table.integer('comment_id')
+});
+}
 /************************************************************
  * Define Delete Table
  ************************************************************/
 exports.down = (knex) => {
-  
+  return knex.schema.dropTable('img_com')
 };
