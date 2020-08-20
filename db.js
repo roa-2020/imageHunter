@@ -6,7 +6,6 @@
  *          Philip Chan     (phil-chan)
  *          Steven DeLacy  (steven-delacy)
  ************************************************************/
-
 const knexfile = require('./knexfile')
 
 /************************************************************
@@ -32,12 +31,16 @@ function formatDate(obj){
 function getImageById(id, db = database){
   return db('images')
     .where('images.id', id)
-    .join('img_com', 'images.id', 'img_com.image_id')
+    .first()
+}
+
+function getCommentsByImageId(id, db = database){
+  return db('img_com')
+    .where('img_com.image_id', id)
     .join('comments', 'img_com.comment_id', 'comments.id')
-    .select()
     .then(res => {
-      res.forEach(img => {
-        formatDate(img)
+      res.forEach(comment => {
+        formatDate(comment)
         delete img.id
       })
       return res
@@ -65,6 +68,7 @@ function saveComment(id, comment, db = database){
  ************************************************************/
 module.exports = {
   getImageById,
+  getCommentsByImageId,
   formatDate,
   saveImage,
   saveComment
