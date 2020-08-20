@@ -7,6 +7,8 @@
  *          Steven DeLacy  (steven-delacy)
  ************************************************************/
 
+const knexfile = require('./knexfile')
+
 /************************************************************
  * Define Requirements
  ************************************************************/
@@ -42,10 +44,15 @@ function getImageById(id, db = database){
     })
 }
 
+function saveImage(image, db = database){
+  return db('images').insert( image )
+}
+
 /************************************************************
  * Export Functions
  ************************************************************/
 module.exports = {
   getImageById,
   formatDate,
+  saveImage,
 }
