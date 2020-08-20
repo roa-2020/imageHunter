@@ -10,22 +10,31 @@
 /************************************************************
  * Define Requirements
  ************************************************************/
-const express = require('express')
-const db = require('../db')
-const router = express.Router()
-
+const express = require("express");
+const db = require("../db");
+const router = express.Router();
 
 /************************************************************
  * Define Routes
  ************************************************************/
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   const viewData = {
-    title: 'Home'
-  }
-  res.render('home', viewData)
-})
+    title: "Home",
+  };
+  res.render("home", viewData);
+});
+
+router.post("/newImage", (req, res) => {
+  db.funcName(req.body)
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      res.status.send("Oh no, something whent wrong!!!", err);
+    });
+});
 
 /************************************************************
  * Export Routes
  ************************************************************/
-module.exports = router
+module.exports = router;
