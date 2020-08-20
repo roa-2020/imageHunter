@@ -12,7 +12,7 @@
  * Define Table and Structure
  ************************************************************/
 exports.up = (knex) => {
-  knex.schema.createTable('images', (table) => {
+  return knex.schema.createTable('images', (table) => {
   table.string('img_url')
   table.string('img_name')
   table.string('author_name')
@@ -23,5 +23,5 @@ exports.up = (knex) => {
  * Define Delete Table
  ************************************************************/
 exports.down = (knex) => {
-    knex.schema.dropTable('images')
+  return knex.schema.dropTable('images')
 };
