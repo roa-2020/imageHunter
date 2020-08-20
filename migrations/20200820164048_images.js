@@ -13,10 +13,11 @@
  ************************************************************/
 exports.up = (knex) => {
   return knex.schema.createTable('images', (table) => {
-  table.string('img_url')
-  table.string('img_name')
-  table.string('author_name')
-  table.string('author_url')
+    table.increments('id')
+    table.string('img_url')
+    table.string('img_name')
+    table.string('author_name')
+    table.string('author_url')
 });
 }
 /************************************************************
