@@ -34,6 +34,31 @@ router.post("/newImage", (req, res) => {
     });
 });
 
+// // stretch content - a gallery to display a grid of images as thumbnails
+// router.get('/gallery', (req, res) => {
+//   res.render('gallery', {})
+// })
+
+//posting up a new image to images page
+router.post('/newImage', (req, res) => {
+  res.redirect(req.get('referer')) //redirects to same page you were just on
+})
+
+//posting up a new comment to images page
+router.post('/newComment', (req, res) => {
+  db.fName().then(()=>{
+    res.redirect(req.get('referer')) //redirects to same page you were just on
+  }).catch((err)=>{
+    console.log(err)
+    res.status(500).send("DATABASE ERROR: " + err.message)
+  })
+})
+
+//display page for images
+router.get('/:id', (req, res) => {
+  res.render('image', {})
+})
+
 /************************************************************
  * Export Routes
  ************************************************************/
