@@ -6,8 +6,7 @@
  *          Philip Chan     (phil-chan)
  *          Steven DeLacy  (steven-delacy)
  ************************************************************/
-
-const knexfile = require("./knexfile");
+const knexfile = require('./knexfile')
 
 /************************************************************
  * Define Requirements
@@ -32,19 +31,23 @@ function formatDate(obj) {
 /************************************************************
  * Define Database Interaction Functions
  ************************************************************/
-function getImageById(id, db = database) {
-  return db("images")
-    .where("images.id", id)
-    .join("img_com", "images.id", "img_com.image_id")
-    .join("comments", "img_com.comment_id", "comments.id")
-    .select()
-    .then((res) => {
-      res.forEach((img) => {
-        formatDate(img);
-        delete img.id;
-      });
-      return res;
-    });
+function getImageById(id, db = database){
+  return db('images')
+    .where('images.id', id)
+    .first()
+}
+
+function getCommentsByImageId(id, db = database){
+  return db('img_com')
+    .where('img_com.image_id', id)
+    .join('comments', 'img_com.comment_id', 'comments.id')
+    .then(res => {
+      res.forEach(comment => {
+        formatDate(comment)
+        delete img.id
+      })
+      return res
+    })
 }
 
 function saveImage(image, db = database) {
@@ -68,6 +71,7 @@ function saveComment(id, comment, db = database){
  ************************************************************/
 module.exports = {
   getImageById,
+  getCommentsByImageId,
   formatDate,
   saveImage,
 };
