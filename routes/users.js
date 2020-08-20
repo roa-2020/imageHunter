@@ -37,7 +37,12 @@ router.post('/newImage', (req, res) => {
 
 //posting up a new comment to images page
 router.post('/newComment', (req, res) => {
-  res.redirect(req.get('referer')) //redirects to same page you were just on
+  db.fName().then(()=>{
+    res.redirect(req.get('referer')) //redirects to same page you were just on
+  }).catch((err)=>{
+    console.log(err)
+    res.status(500).send("DATABASE ERROR: " + err.message)
+  })
 })
 
 //display page for images
