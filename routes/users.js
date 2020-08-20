@@ -30,11 +30,6 @@ router.get('/', (req, res) => {
 //   res.render('gallery', {})
 // })
 
-//display page for images
-router.get('/:id', (req, res) => {
-  res.render('image', {})
-})
-
 //posting up a new image to images page
 router.post('/newImage', (req, res) => {
   res.redirect(req.get('referer')) //redirects to same page you were just on
@@ -43,6 +38,11 @@ router.post('/newImage', (req, res) => {
 //posting up a new comment to images page
 router.post('/newComment', (req, res) => {
   res.redirect(req.get('referer')) //redirects to same page you were just on
+})
+
+//display page for images
+router.get('/:id', (req, res) => {
+  res.render('image', {})
 })
 
 /************************************************************
