@@ -11,18 +11,21 @@ const knexfile = require('./knexfile')
 /************************************************************
  * Define Requirements
  ************************************************************/
-const environment = process.env.NODE_ENV || 'development'
-const config = require('./knexfile')[environment]
-const database = require('knex')(config)
-
+const environment = process.env.NODE_ENV || "development";
+const config = require("./knexfile")[environment];
+const database = require("knex")(config);
 
 /************************************************************
  * Define Data Transformation Functions
  ************************************************************/
-function formatDate(obj){
-  const date = new Date(obj.date).toLocaleString('default', { day: 'numeric', month: 'long', year: 'numeric'});
+function formatDate(obj) {
+  const date = new Date(obj.date).toLocaleString("default", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
   obj.date = date;
-  return obj
+  return obj;
 }
 
 /************************************************************
@@ -47,8 +50,8 @@ function getCommentsByImageId(id, db = database){
     })
 }
 
-function saveImage(image, db = database){
-  return db('images').insert( image )
+function saveImage(image, db = database) {
+  return db("images").insert(image);
 }
 
 function saveComment(id, comment, db = database){
@@ -71,5 +74,4 @@ module.exports = {
   getCommentsByImageId,
   formatDate,
   saveImage,
-  saveComment
-}
+};
