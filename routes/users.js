@@ -34,16 +34,6 @@ router.post("/newImage", (req, res) => {
     });
 });
 
-// // stretch content - a gallery to display a grid of images as thumbnails
-// router.get('/gallery', (req, res) => {
-//   res.render('gallery', {})
-// })
-
-//posting up a new image to images page
-router.post('/newImage', (req, res) => {
-  res.redirect(req.get('referer')) //redirects to same page you were just on
-})
-
 //posting up a new comment to images page
 router.post('/newComment', (req, res) => {
   db.fName().then(()=>{
@@ -54,9 +44,32 @@ router.post('/newComment', (req, res) => {
   })
 })
 
+// // stretch content - a gallery to display a grid of images as thumbnails
+// router.get('/gallery', (req, res) => {
+//   res.render('gallery', {})
+// })
+
 //display page for images
 router.get('/:id', (req, res) => {
-  res.render('image', {})
+  db.getImageById(req.params.id).then((data)=>{
+      console.log(data)
+    //object to pass to display correct image 
+    const imgData = {
+      img_id: data.img_id,
+      img_url: data.img_url,
+      img_name: data.img_name,
+      author_name: data.author_name,
+      author_url: data.author_url,
+      comments: data.comments //an array of comments (which are objects)
+    }
+
+    console.log(imgData)
+
+    res.render('image', imgData)
+  }).catch((err)=>{
+    console.log(err)
+    res.status(500).send("DATABASE ERROR: " + err.message)
+  })
 })
 
 /************************************************************
