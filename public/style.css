@@ -1,7 +1,6 @@
 /************************************************************
- * File:    migrations/20200820164113_img_com.js
- * Purpose: Define Images/Comments Joining Table Structure 
- *          for Creation and Deletion of table
+ * File:    public/style.css
+ * Purpose: Define Site Styles
  * Authors: Anthony McGrath (anthony-kyle)
  *          Matt Saunders   (itsmattsaunders)
  *          Philip Chan     (phil-chan)
@@ -9,15 +8,16 @@
  ************************************************************/
 
 /************************************************************
- * Define Table and Structure
+ * Global Styles
  ************************************************************/
-exports.up = (knex) => {
-  
-};
+body {
+  background-color: bisque;
+}
 
 /************************************************************
- * Define Delete Table
+ * Carousel Styles
  ************************************************************/
-exports.down = (knex) => {
-  
-};
+
+ /************************************************************
+ * Form Styles
+ ************************************************************/

@@ -1,9 +1,23 @@
+/************************************************************
+ * File:    routes/users.js
+ * Purpose: Define Server Routes for Handling Requests from /
+ * Authors: Anthony McGrath (anthony-kyle)
+ *          Matt Saunders   (itsmattsaunders)
+ *          Philip Chan     (phil-chan)
+ *          Steven DeLacy  (steven-delacy)
+ ************************************************************/
+
+/************************************************************
+ * Define Requirements
+ ************************************************************/
 const express = require('express')
-
 const db = require('../db')
-
 const router = express.Router()
 
+
+/************************************************************
+ * Define Routes
+ ************************************************************/
 router.get('/', (req, res) => {
   const viewData = {
     title: 'Home'
@@ -36,4 +50,7 @@ router.post('/:id', (req, res) => {
   res.redirect(req.get('referer')) //redirects to same page you were just on
 })
 
+/************************************************************
+ * Export Routes
+ ************************************************************/
 module.exports = router
