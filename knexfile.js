@@ -1,5 +1,11 @@
-// Update with your config settings.
-
+/************************************************************
+ * File:    knexfile.js
+ * Purpose: Define Knex Configuration
+ * Authors: Anthony McGrath (anthony-kyle)
+ *          Matt Saunders   (itsmattsaunders)
+ *          Philip Chan     (phil-chan)
+ *          Steven DeLacy  (steven-delacy)
+ ************************************************************/
 module.exports = {
 
   development: {
