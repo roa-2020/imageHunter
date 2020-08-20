@@ -14,16 +14,38 @@ const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
 const database = require('knex')(config)
 
+
 /************************************************************
- * Define Database Interaction FUnctions
+ * Define Data Transformation Functions
  ************************************************************/
-function doSomething(db = database){
-  return true
+function formatDate(obj){
+  const date = new Date(obj.date).toLocaleString('default', { day: 'numeric', month: 'long', year: 'numeric'});
+  obj.date = date;
+  return obj
+}
+
+/************************************************************
+ * Define Database Interaction Functions
+ ************************************************************/
+function getImageById(id, db = database){
+  return db('images')
+    .where('images.id', id)
+    .join('img_com', 'images.id', 'img_com.image_id')
+    .join('comments', 'img_com.comment_id', 'comments.id')
+    .select()
+    .then(res => {
+      res.forEach(img => {
+        formatDate(img)
+        delete img.id
+      })
+      return res
+    })
 }
 
 /************************************************************
  * Export Functions
  ************************************************************/
 module.exports = {
-  doSomething,
+  getImageById,
+  formatDate,
 }
