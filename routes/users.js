@@ -52,14 +52,15 @@ router.post('/newComment', (req, res) => {
 //display page for images
 router.get('/:id', (req, res) => {
   db.ffName(req.params.id).then((data)=>{
-    
+
     //object to pass to display correct image 
     const imgData = {
-      id: data.id,
-      user_name: data.user_name,
-      user_img: data.user_img,
-      date: data.date,
-      comment: data.comment,
+      img_id: data.img_id,
+      img_url: data.img_url,
+      img_name: data.img_name,
+      author_name: data.author_name,
+      author_url: data.author_url,
+      comments: data.comments //an array of comments (which are objects)
     }
 
     res.render('image', {imgData})
