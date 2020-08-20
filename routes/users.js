@@ -51,8 +51,8 @@ router.post('/newComment', (req, res) => {
 
 //display page for images
 router.get('/:id', (req, res) => {
-  db.ffName(req.params.id).then((data)=>{
-
+  db.getImageById(req.params.id).then((data)=>{
+      console.log(data)
     //object to pass to display correct image 
     const imgData = {
       img_id: data.img_id,
@@ -62,6 +62,8 @@ router.get('/:id', (req, res) => {
       author_url: data.author_url,
       comments: data.comments //an array of comments (which are objects)
     }
+
+    console.log(imgData)
 
     res.render('image', imgData)
   }).catch((err)=>{
