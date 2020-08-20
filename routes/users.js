@@ -63,7 +63,7 @@ router.get('/:id', (req, res) => {
       comments: data.comments //an array of comments (which are objects)
     }
 
-    res.render('image', {imgData})
+    res.render('image', imgData)
   }).catch((err)=>{
     console.log(err)
     res.status(500).send("DATABASE ERROR: " + err.message)
