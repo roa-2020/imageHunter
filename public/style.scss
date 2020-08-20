@@ -1,0 +1,54 @@
+$md: 768;
+$lg: 1028;
+$cols: 12;
+
+.container {
+  max-width: $lg * 1px;
+  margin: 0 auto;
+  &-fluid {
+    margin: 0;
+    max-width: 100%;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: $md * 1px) {
+  @for $i from 1 through $cols {
+    &.col-sm-#{$i} {
+      flex-basis: (100 / ($cols / $i)) * 1%;
+    }
+  }
+}
+
+@media screen and (min-width: $md * 1px) {
+  @for $i from 1 through $cols {
+    &.col-md-#{$i} {
+      flex-basis: (100 / ($cols / $i)) * 1%;
+    }
+  }
+}
+@media screen and (min-width: $lg * 1px) {
+  @for $i from 1 through $cols {
+    &.col-lg-#{$i} {
+      flex-basis: (100 / ($cols / $i)) * 1%;
+    }
+  }
+}
+
+// From here is just styling stuff.
+
+.coral {
+  background-color: coral;
+}
+
+.cyan {
+  background-color: cyan;
+}
+
+.green {
+  background-color: green;
+}
