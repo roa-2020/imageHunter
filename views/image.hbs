@@ -3,8 +3,8 @@
   {{!-- A modal for submitting new img --}}
   {{>modal}}
 
-  <a href="/image/{{next_id}}">next image</a>
-  <a href="/image/{{prev_id}}">previous image</a>
+  
+  
   {{!-- //Displaying Image with author and date --}}
 
   {{!-- //Displaying Image with author and date --}}
@@ -16,7 +16,9 @@
     <div class="col-lg-12 col-md-12 col-sm-12 item-center">
       <h2 class="my1">{{img_name}}</h2>
       <div class="image-center">
+        <a class="navArrow" href="/image/{{prev_id}}"><i class="fas fa-caret-left"></i></a>
         <img src="{{img_url}}">
+        <a class="navArrow" href="/image/{{next_id}}"><i class="fas fa-caret-right"></i></a>
       </div>
     </div>
   </div>
