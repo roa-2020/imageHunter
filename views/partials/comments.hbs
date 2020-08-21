@@ -1,20 +1,21 @@
 {{#each comments}}
-<div class="row">
-    <div class="card col-sm-12 col-md-10 col-lg-10 item-center my-1">
-        <div class="">
-            <img class="" src="{{user_image}}" alt="">
-        </div>
-        <div class="col-sm-12 col-md-8 col-lg-12">
+<div class="row justify-content-center my1">
+    <div class="card col-sm-12 col-md-10 col-lg-10 justify-content-center align-content-center my05">
+
+        <img src="{{user_image}}" alt="">
+
+        <div class="col-sm-12 col-md-8 col-lg-12 item-center">
             <h4>{{user_name}}</h4>
             <p>"{{comment}}"</p>
         </div>
     </div>
 </div>
 
+
 {{/each}}
 
 
-{{!-- <div class="row justify-content-center my1">
+{{!-- <div class="row j">
     <div class="card col-sm-12 col-md-10 col-lg-10 my05">
         <div class="space-between">
             <div class="col-sm-12 col-md-4 col-lg-4">
