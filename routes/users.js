@@ -90,7 +90,6 @@ router.get('/image/:id', (req, res) => {
         prev_id: prev_id,
         next_id: next_id
       }
-      console.log(viewData)
       res.render('image', viewData)
     }).catch((err) => {
       console.log(err)
