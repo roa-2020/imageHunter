@@ -29,6 +29,7 @@ p {
 .my05 {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+}
 
 .my1 {
   margin-top: 1em;
@@ -144,6 +145,24 @@ textarea {
   border-radius: 9px;
 }
 
+.image-center {
+  display: flex;
+  align-items: center;
+}
+.navArrow {
+  color: $nav;
+  display: flex;
+  margin: auto;
+  margin: 16px;
+  font-size: 10em;
+  text-decoration: none;
+  
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    opacity: 0.7;
+  }
+}
 //Flex-Grid
 
 @media screen and (max-width: $md * 1px) {
