@@ -138,6 +138,26 @@ p {
   }
 }
 
+<<<<<<< HEAD
+.image-comment-container{
+  width: 50vw;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+}
+
+.image-comment-container input{
+  text-align: center;
+  width: 150px;  
+}
+
+.image-comment-container textarea{
+  text-align: center;
+  width: 300px;
+}
+
+=======
 textarea {
   width: 100%;
   padding: 1em;
@@ -163,6 +183,7 @@ textarea {
     opacity: 0.7;
   }
 }
+>>>>>>> 2bbd0e20a0aa71ddfd6313725b82c6db78ab9fc9
 //Flex-Grid
 
 @media screen and (max-width: $md * 1px) {
