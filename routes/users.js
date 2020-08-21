@@ -32,18 +32,19 @@ router.post("/newImage", (req, res) => {
 });
 
 //posting up a new comment to images page
-router.post('/newComment', (req, res) => {
+router.post('/newComment/:id', (req, res) => {
   const newComment = {
     comment: req.body.comment,
     user_name: req.body.name,
     user_image: "",
-    date: "",
+    date: new Date(),
   }
 
-  const imgId = 0 //how to get image id?
-  console.log(req.params)
+  const imgId = req.params.id //how to get image id?
+  console.log(imgId)
   db.saveComment(imgId, newComment).then(() => {
-    res.redirect(req.get('referer')) //redirects to same page you were just on
+    console.log("hi")
+    res.redirect("/image/"+req.params.id) //redirects to same page you were just on
   }).catch((err) => {
     console.log(err)
     res.status(500).send("DATABASE ERROR: " + err.message)
