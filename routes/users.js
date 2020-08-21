@@ -23,17 +23,15 @@ router.get("/", (req, res) => {
 
 router.post("/newImage/:id", (req, res) => {
   const newImage = {
-    img_url: req.body.imageURL,
-    img_name: req.body.imageName,
-    author_name: req.body.authorName,
-    author_url: req.body.authorURL,
+    img_url: req.body.img_url,
+    img_name: req.body.img_name,
+    author_name: req.body.artist_name,
+    author_url: req.body.artist_url,
   }
-
-  console.log(newImage)
-
+  
   db.saveImage(newImage)
-    .then(() => {
-      res.redirect("/");
+    .then((imgId) => {
+      res.redirect("/image/"+imgId);
     })
     .catch((err) => {
       res.status.send("Oh no, something whent wrong!!!", err);
