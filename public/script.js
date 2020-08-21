@@ -10,29 +10,30 @@
 /************************************************************
  * Define Global Variables
  ************************************************************/
-let modal         = document.querySelector("#myModal")
-let uploadButton  = document.querySelector("#uploadImageToggle")
-let closeModal    = document.querySelector("#closeModal")
-
+let modal = document.querySelector("#myModal");
+let uploadButton = document.querySelector("#uploadImageToggle");
+let closeModal = document.querySelector("#closeModal");
 
 /************************************************************
  * Define Functions
  ************************************************************/
-function addListeners(){
-  modal.addEventListener('click', hideModal)
-  uploadButton.addEventListener('click', showModal)
-  closeModal.addEventListener('click', hideModal)
+function addListeners() {
+  modal.addEventListener("click", hideModal);
+  uploadButton.addEventListener("click", showModal);
+  closeModal.addEventListener("click", hideModal);
 }
 
-function showModal(){
-  modal.classList.remove('hidden')
+function showModal() {
+  modal.classList.remove("hidden");
+  console.log("Click");
 }
 
-function hideModal(){
-  modal.classList.add('hidden')
+function hideModal() {
+  modal.classList.add("hidden");
+  console.log("Click");
 }
 
 /************************************************************
  * Add Listeners
  ************************************************************/
-document.addEventListener('DOMContentLoaded', addListeners)
+document.addEventListener("DOMContentLoaded", addListeners);
