@@ -43,7 +43,7 @@ router.post('/newComment/:id', (req, res) => {
   const newComment = {
     comment: req.body.comment,
     user_name: req.body.name,
-    user_image: "",
+    user_image: req.body.userImg,
     date: new Date(),
   }
 
