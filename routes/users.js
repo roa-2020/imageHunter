@@ -64,7 +64,7 @@ router.post('/newComment/:id', (req, res) => {
 
 //display page for images
 router.get('/image/:id', (req, res) => {
-  const id = req.params.id
+  const id = Number(req.params.id)
   const getImage = db.getImageById(id)
   const getComments = db.getCommentsByImageId(id)
   const imageCount = db.getImageCount()
