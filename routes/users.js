@@ -48,25 +48,32 @@ router.post('/newComment', (req, res) => {
 
 //display page for images
 router.get('/image/:id', (req, res) => {
-  console.log(req.params)
   const id = req.params.id
   const getImage = db.getImageById(id)
   const getComments = db.getCommentsByImageId(id)
-  Promise.all([getImage, getComments])
+  const imageCount = db.getImageCount()
+
+  Promise.all([getImage, getComments, imageCount])
     .then(results => {
-      console.log('Hello', results)
       const image = results[0]
-      // console.log('----', image)
       const comments = results[1]
-      //object to pass to display correct image 
+      const count = results[2][0].count
+      let prev_id = image.id - 1
+      let next_id = image.id + 1
+      if (prev_id < 1) prev_id = count
+      if (next_id > count) next_id = 1
+
       const viewData = {
         img_id: image.id,
         img_url: image.img_url,
         img_name: image.img_name,
         author_name: image.author_name,
         author_url: image.author_url,
-        comments: comments //an array of comments (which are objects)
+        comments: comments, //an array of comments (which are objects)
+        prev_id: prev_id,
+        next_id: next_id
       }
+      
       res.render('image', viewData)
     }).catch((err) => {
       console.log(err)
