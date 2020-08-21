@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "test": "jest --watchAll --coverage --noStackTrace"
+    "test": "jest --watchAll --coverage --noStackTrace",
+    "postinstall": "knex migrate:latest"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
-    "knex": "^0.21.5"
+    "knex": "^0.21.5",
+    "pg": "^8.3.2"
   },
   "devDependencies": {
     "cheerio": "^1.0.0-rc.3",
