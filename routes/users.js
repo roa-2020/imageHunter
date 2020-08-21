@@ -33,7 +33,14 @@ router.post("/newImage", (req, res) => {
 
 //posting up a new comment to images page
 router.post('/newComment', (req, res) => {
-  db.fName().then(() => {
+  const newComment = {
+    comment: req.body.comment,
+    user_name: req.body.name,
+    user_image: "",
+    date: "",
+  }
+  console.log(req.params.id) //is undefined, not sure how to reference img id from here
+  db.saveComment(req.params.id, newComment).then(() => {
     res.redirect(req.get('referer')) //redirects to same page you were just on
   }).catch((err) => {
     console.log(err)
@@ -48,16 +55,14 @@ router.post('/newComment', (req, res) => {
 
 //display page for images
 router.get('/image/:id', (req, res) => {
-  console.log(req.params)
   const id = req.params.id
   const getImage = db.getImageById(id)
   const getComments = db.getCommentsByImageId(id)
   Promise.all([getImage, getComments])
     .then(results => {
-      console.log('Hello', results)
       const image = results[0]
-      // console.log('----', image)
       const comments = results[1]
+
       //object to pass to display correct image 
       const viewData = {
         img_id: image.id,
