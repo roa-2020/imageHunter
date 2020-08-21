@@ -21,8 +21,17 @@ router.get("/", (req, res) => {
   res.redirect("/image/1");
 });
 
-router.post("/newImage", (req, res) => {
-  db.funcName(req.body)
+router.post("/newImage/:id", (req, res) => {
+  const newImage = {
+    img_url: req.body.imageURL,
+    img_name: req.body.imageName,
+    author_name: req.body.authorName,
+    author_url: req.body.authorURL,
+  }
+
+  console.log(newImage)
+
+  db.saveImage(newImage)
     .then(() => {
       res.redirect("/");
     })
@@ -41,7 +50,6 @@ router.post('/newComment/:id', (req, res) => {
   }
 
   const imgId = req.params.id //how to get image id?
-  console.log(imgId)
   db.saveComment(imgId, newComment).then(() => {
     res.redirect("/image/"+req.params.id) //redirects to same page you were just on
   }).catch((err) => {
