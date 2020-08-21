@@ -28,8 +28,11 @@ function showModal(){
   modal.classList.remove('hidden')
 }
 
-function hideModal(){
-  modal.classList.add('hidden')
+function hideModal(evt){
+  console.log(evt.target.localName)
+  if (evt.target.localName != 'input' && evt.target.localName != 'form'){
+    modal.classList.add('hidden')
+  }
 }
 
 /************************************************************
