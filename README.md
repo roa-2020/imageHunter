@@ -6,7 +6,7 @@ Users can leave comments on the images.
 
 # View the live site:
 
-https://imageHunter.herokuapp.com/
+https://image-hunter.herokuapp.com/
 
 ## To get started on your own:
 
