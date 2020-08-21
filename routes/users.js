@@ -34,7 +34,8 @@ router.post("/newImage/:id", (req, res) => {
       res.redirect("/image/"+imgId);
     })
     .catch((err) => {
-      res.status.send("Oh no, something went wrong!!!", err);
+      console.error(err)
+      res.send("Oh no, something went wrong!!!", err);
     });
 });
 
