@@ -32,7 +32,7 @@ function formatDate(obj) {
  * Define Database Interaction Functions
  ************************************************************/
 function getImageCount(db = database){
-  return db('images').count('id')
+  return db('images').count('id', {as : 'count'})
 }
 
 function getImageById(id, db = database){
