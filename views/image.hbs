@@ -1,8 +1,17 @@
 <div class="container">
   {{>navbar}}
+  {{!-- A modal for submitting new img --}}
   {{>modal}}
 
+  <a href="/image/{{next_id}}">next image</a>
+  <a href="/image/{{prev_id}}">previous image</a>
   {{!-- //Displaying Image with author and date --}}
+
+  {{!-- //Displaying Image with author and date --}}
+
+
+
+
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 item-center">
       <h2 class="my1">{{img_name}}</h2>
@@ -26,27 +35,8 @@
     {{>comments}}
   </div>
 
+  {{!-- A form for making a new comment --}}
+  {{>commentForm}}
 
-
-</div>
-
-
-
-
-{{!-- A form for making a new comment --}}
-<form action="/newComment" method='post'>
-  <div class="image-comment-name">
-    <label>Name
-      <input type="text" name="name">
-    </label>
-  </div>
-
-  <div class="image-comment-content">
-    <label>Content
-      <textarea type="text" name="email"></textarea>
-    </label>
-  </div>
-  <input type="submit" value="Submit">
-</form>
 
 </div>
