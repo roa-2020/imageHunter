@@ -43,7 +43,6 @@ router.post('/newComment/:id', (req, res) => {
   const imgId = req.params.id //how to get image id?
   console.log(imgId)
   db.saveComment(imgId, newComment).then(() => {
-    console.log("hi")
     res.redirect("/image/"+req.params.id) //redirects to same page you were just on
   }).catch((err) => {
     console.log(err)
