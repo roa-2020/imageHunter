@@ -31,6 +31,10 @@ function formatDate(obj) {
 /************************************************************
  * Define Database Interaction Functions
  ************************************************************/
+function getImageCount(db = database){
+  return db('images').count('id')
+}
+
 function getImageById(id, db = database){
   return db('images')
     .where('images.id', id)
@@ -70,6 +74,7 @@ function saveComment(id, comment, db = database){
  * Export Functions
  ************************************************************/
 module.exports = {
+  getImageCount,
   getImageById,
   getCommentsByImageId,
   formatDate,
