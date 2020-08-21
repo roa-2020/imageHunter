@@ -79,4 +79,5 @@ module.exports = {
   getCommentsByImageId,
   formatDate,
   saveImage,
+  saveComment
 };
