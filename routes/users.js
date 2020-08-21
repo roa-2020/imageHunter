@@ -18,10 +18,7 @@ const router = express.Router();
  * Define Routes
  ************************************************************/
 router.get("/", (req, res) => {
-  const viewData = {
-    title: "Home",
-  };
-  res.render("home", viewData);
+  res.redirect("/image/1");
 });
 
 router.post("/newImage", (req, res) => {
@@ -36,9 +33,9 @@ router.post("/newImage", (req, res) => {
 
 //posting up a new comment to images page
 router.post('/newComment', (req, res) => {
-  db.fName().then(()=>{
+  db.fName().then(() => {
     res.redirect(req.get('referer')) //redirects to same page you were just on
-  }).catch((err)=>{
+  }).catch((err) => {
     console.log(err)
     res.status(500).send("DATABASE ERROR: " + err.message)
   })
@@ -50,26 +47,31 @@ router.post('/newComment', (req, res) => {
 // })
 
 //display page for images
-router.get('/:id', (req, res) => {
-  db.getImageById(req.params.id).then((data)=>{
-      console.log(data)
-    //object to pass to display correct image 
-    const imgData = {
-      img_id: data.img_id,
-      img_url: data.img_url,
-      img_name: data.img_name,
-      author_name: data.author_name,
-      author_url: data.author_url,
-      comments: data.comments //an array of comments (which are objects)
-    }
-
-    console.log(imgData)
-
-    res.render('image', imgData)
-  }).catch((err)=>{
-    console.log(err)
-    res.status(500).send("DATABASE ERROR: " + err.message)
-  })
+router.get('/image/:id', (req, res) => {
+  console.log(req.params)
+  const id = req.params.id
+  const getImage = db.getImageById(id)
+  const getComments = db.getCommentsByImageId(id)
+  Promise.all([getImage, getComments])
+    .then(results => {
+      console.log('Hello', results)
+      const image = results[0]
+      // console.log('----', image)
+      const comments = results[1]
+      //object to pass to display correct image 
+      const viewData = {
+        img_id: image.id,
+        img_url: image.img_url,
+        img_name: image.img_name,
+        author_name: image.author_name,
+        author_url: image.author_url,
+        comments: comments //an array of comments (which are objects)
+      }
+      res.render('image', viewData)
+    }).catch((err) => {
+      console.log(err)
+      res.status(500).send("DATABASE ERROR: " + err.message)
+    })
 })
 
 /************************************************************

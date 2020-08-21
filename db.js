@@ -44,7 +44,7 @@ function getCommentsByImageId(id, db = database){
     .then(res => {
       res.forEach(comment => {
         formatDate(comment)
-        delete img.id
+        delete comment.id
       })
       return res
     })

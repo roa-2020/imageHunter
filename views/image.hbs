@@ -1,3 +1,4 @@
+{{>modal}}
 <h1>Image page</h1>
 
 {{!-- //Displaying Image with author and date --}}
@@ -7,26 +8,26 @@
 
 {{!-- Displaying all comments for image --}}
 <div>
-    {{#each comments}}
-        <p>{{user_name}}</p>
-        <p>{{user_img}}</p>
-        <p>{{date}}</p>
-        <p>{{comment}}</p>
-    {{/each}}
+  {{#each comments}}
+  <p>{{user_name}}</p>
+  <p>{{user_img}}</p>
+  <p>{{date}}</p>
+  <p>{{comment}}</p>
+  {{/each}}
 </div>
 
 {{!-- A form for making a new comment --}}
-  <form action="/newComment" method='post'>
-    <div class="image-comment-name">
-      <label>Name
-        <input type="text" name="name">
-      </label>
-    </div>
+<form action="/newComment" method='post'>
+  <div class="image-comment-name">
+    <label>Name
+      <input type="text" name="name">
+    </label>
+  </div>
 
-    <div class="image-comment-content">
-      <label>Content
-        <textarea type="text" name="email"></textarea>
-      </label>
-    </div>
-    <input type="submit" value="Submit">
-  </form>
+  <div class="image-comment-content">
+    <label>Content
+      <textarea type="text" name="email"></textarea>
+    </label>
+  </div>
+  <input type="submit" value="Submit">
+</form>
