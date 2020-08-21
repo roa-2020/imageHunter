@@ -43,7 +43,7 @@ router.post('/newComment/:id', (req, res) => {
   const newComment = {
     comment: req.body.comment,
     user_name: req.body.name,
-    user_image: "",
+    user_image: req.body.userImg,
     date: new Date(),
   }
 
@@ -90,7 +90,7 @@ router.get('/image/:id', (req, res) => {
         prev_id: prev_id,
         next_id: next_id
       }
-      
+      console.log(viewData)
       res.render('image', viewData)
     }).catch((err) => {
       console.log(err)
