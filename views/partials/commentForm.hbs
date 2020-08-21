@@ -1,21 +1,18 @@
-<div class="image-comment-container">
-<form action="/newComment/{{img_id}}" method='post'>
-  <div class="image-comment-name">
-    <label>Name</label>
-      <input type="text" name="name">
-    
-  </div>
+<div class="row justify-content-center">
+  <div class="col-lg-10 col-md-10 col-sm-11">
+    <form action="/newComment/{{img_id}}" method='post'>
+      <div class="image-comment-name">
+        <label>Name
+          <input type="text" name="name">
+        </label>
+      </div>
 
-<div class="image-comment-userImg">
-    <label>Your picture</label>
-      <input type="text" name="userImg">
-    
+      <div class="image-comment-content">
+        <label>Content
+          <textarea type="text" name="comment"></textarea>
+        </label>
+      </div>
+      <input class="btn" type="submit" value="Submit">
+    </form>
   </div>
-
-  <div class="image-comment-content">
-    <label>Content</label>
-      <textarea type="text" name="comment"></textarea>
-  </div>
-  <input type="submit" value="Submit">
-</form>
 </div>

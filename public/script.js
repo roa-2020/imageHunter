@@ -25,11 +25,9 @@ function addListeners() {
 
 function showModal() {
   modal.classList.remove("hidden");
-  console.log("Click");
 }
 
 function hideModal(evt){
-  console.log(evt.target.localName)
   if (evt.target.localName != 'input' && evt.target.localName != 'form'){
     modal.classList.add('hidden')
   }

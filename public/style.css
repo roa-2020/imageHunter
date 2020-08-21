@@ -20,6 +20,11 @@ p {
   font-family: "Roboto", sans-serif;
 }
 
+.my05 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 .my1 {
   margin-top: 1em;
   margin-bottom: 1em;
@@ -92,6 +97,15 @@ p {
           justify-content: space-between;
 }
 
+.justify-content-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .nav {
   background-color: #457b9d;
 }
@@ -135,27 +149,36 @@ p {
   cursor: pointer;
 }
 
-.image-comment-container {
-  width: 50vw;
-  margin: 0 auto;
+textarea {
+  width: 100%;
+  padding: 1em;
+  border: 2px solid rgba(56, 51, 51, 0.171);
+  border-radius: 9px;
+}
+
+.image-center {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
-  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.image-comment-container input {
-  text-align: center;
-  width: 150px;
+.navArrow {
+  color: #457b9d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  margin: 16px;
+  font-size: 10em;
+  text-decoration: none;
 }
 
-.image-comment-container textarea {
-  text-align: center;
-  width: 300px;
+.navArrow:hover, .navArrow:focus {
+  text-decoration: none;
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 768px) {
